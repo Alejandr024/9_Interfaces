@@ -74,7 +74,7 @@ public class Tutor implements FCT{
     public String obtenerEmpresa(AlumnoSegundo alumno) {
         int n= buscar(alumno);
         
-        if(n>=0){
+        if(n>=0 && empresas[n]!=null){
             return "La empresa asignada al alumno " + alumno.getNombre() +alumno.getApellido() + " es: " + empresas[n] + ".";
         }
         
