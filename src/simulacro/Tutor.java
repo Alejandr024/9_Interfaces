@@ -78,7 +78,7 @@ public class Tutor implements FCT{
             return "La empresa asignada al alumno " + alumno.getNombre() +alumno.getApellido() + " es: " + empresas[n] + ".";
         }
         
-        return "No se le ha asignado ninguna empresa";
+        return "No esta matriculado mi colegoncio";
     }
 
     @Override
