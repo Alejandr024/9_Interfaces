@@ -16,7 +16,14 @@ public class Alumno {
         this.ciclo = ciclo;
         distancia = 0.;
     }
-
+    
+    
+    public String toString(){
+        return String.format("Alumno: %s, %s; Instituto: %s; Ciclo: %s", getNombre(), getApellido(), instituto, ciclo);
+    }
+    
+    
+    
     /**
      * @return the nombre
      */

@@ -15,33 +15,28 @@ public class AlumnoPrimero extends Alumno {
     }
 
     public void addModulo(String modulo) {
-        String [] arrayAux= Arrays.copyOf(getModulos(), getModulos().length+1);
-        
-        arrayAux[arrayAux.length-1]= modulo;
-        modulos=arrayAux;
+        String[] arrayAux = Arrays.copyOf(getModulos(), getModulos().length + 1);
+
+        arrayAux[arrayAux.length - 1] = modulo;
+        modulos = arrayAux;
         System.out.println("El modulo " + modulo + " ha sido agregado.");
     }
 
     public void mostrarModulos() {
-        System.out.println("Modulos matriculados del alumno de 1ºDAW " + getNombre() + " " + getApellido() + ": " + Arrays.toString(getModulos()) + ".");
+        System.out.println("Modulos matriculados del alumno de " + curso + "ºDAW " + getNombre() + " " + getApellido() + ": " + Arrays.toString(getModulos()) + ".");
     }
 
     public void superarModulo(String modulo) {
-        String[] arrayAux = new String[0];
-        if (getModulos()[buscar(modulo)] == modulo) {
-            for (int i = 0; i < arrayAux.length; i++) {
-                if (!modulo.equals(modulos[i])) {
-                    arrayAux[i] = getModulos()[i];
+        int indice = buscar(modulo);
+        String[] aux = new String[modulos.length - 1];
+        if (indice >= 0) {
+            for (int i = 0, j = 0; i < modulos.length; i++) {
+                if (i != indice) {
+                    aux[j] = modulos[i];
+                    j++;
                 }
             }
-        }
-        modulos = arrayAux;
-
-        if (getModulos().length == 0) {
-            System.out.println("El alumno ha superado todos los modulos.");
-        } else {
-            System.out.println("El alumno ha superado el modulo " + modulo + ". Al alumno le faltarian los siguientes modulos");
-            System.out.println(Arrays.toString(getModulos()));
+            System.out.println("Modulo eliminado");
         }
     }
 
@@ -61,7 +56,7 @@ public class AlumnoPrimero extends Alumno {
 
     @Override
     public String toString() {
-        return super.toString();
+        return super.toString() + String.format("(curso: %d)", curso);
     }
 
     /**
@@ -71,4 +66,4 @@ public class AlumnoPrimero extends Alumno {
         return modulos;
     }
 
-}
+}//end class

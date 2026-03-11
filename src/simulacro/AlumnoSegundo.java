@@ -28,15 +28,13 @@ public class AlumnoSegundo extends Alumno implements FCT{
     }
     
     
-    public void mostrarModulo(){
-        System.out.println("Modulos matriculados del alumno de 2ºDAW " + getNombre() + " " + getApellido() + ": " + Arrays.toString(getModulos()) + ".");
-    }    
+    public void mostrarModulos() {
+        System.out.println("Modulos matriculados del alumno de " + curso + "ºDAW " + getNombre() + " " + getApellido() + ": " + Arrays.toString(getModulos()) + ".");
+    } 
     
     @Override
     public void asignarEmpresa(AlumnoSegundo alumno, String empresa) {
-        alumno.empresa=empresa;
-        System.out.println("La empresa " + empresa + " asignada a " + alumno.getNombre() + ".");
-        System.out.println(alumno.getNombre() + " " + alumno.getApellido() + " no tiene privilegios para asignar empresas, contacte con su tutor.");
+        System.out.println(getNombre() + " " + getApellido() + " no tiene privilegios para asignar empresas, contacte con su tutor.");
     }
 
     @Override

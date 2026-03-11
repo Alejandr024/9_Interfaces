@@ -4,6 +4,8 @@
  */
 package simulacro;
 
+import java.util.Arrays;
+
 /**
  *
  * @author Alejandro <alej3839@gmail.com>
@@ -14,33 +16,69 @@ public class Tutor implements FCT{
     private String apellido;
     private String instituto;
     private String ciclo;
-    private AlumnoSegundo[] alumno;
+    private AlumnoSegundo[] alumnos;
     private String modulo;
     private double distancia;
     private String[] empresas;
 
-    public Tutor(String nombre, String apellido, String instituto, String ciclo, AlumnoSegundo[] alumno, String modulo, double distancia) {
+    public Tutor(String nombre, String apellido, String instituto, String ciclo) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.instituto = instituto;
         this.ciclo = ciclo;
-        this.alumno = alumno;
+        this.alumnos = new AlumnoSegundo[0];
         this.modulo = modulo;
-        this.distancia = distancia;
+        this.distancia = 0;
         this.empresas= new String[0];
     }
     
     
+    int buscar(AlumnoSegundo alumno) {
+        int indice = -1;
+        for (int i = 0; i < alumnos.length && indice == -1; i++) {
+            if (alumnos[i].equals(alumno)) {
+                indice = i;
+                break;
+            }
+        }
+        if (indice == -1) {
+            System.out.println("Este alumno no esta matriculado.");
+        }
+        return indice;
+    }
     
+    
+    public void addAlumno(AlumnoSegundo alumno) {
+        AlumnoSegundo[] arrayAux = Arrays.copyOf(alumnos, alumnos.length + 1);
+
+        arrayAux[arrayAux.length - 1] = alumno;
+        alumnos = arrayAux;
+        System.out.println("El modulo " + alumno + " ha sido agregado.");
+        empresas= Arrays.copyOf(empresas, empresas.length+1);
+    }
+       
+    public void mostrarAlmnos() {
+        System.out.println("Alumno de 2 de " + nombre + apellido + " por orden de insercion: ");
+        
+        for(AlumnoSegundo alumno: alumnos){
+            System.out.println(alumno.getNombre() + alumno.getApellido() + Arrays.toString(alumno.getModulos()));
+        }
+    }
     
     @Override
     public void asignarEmpresa(AlumnoSegundo alumno, String empresa) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        empresas[buscar(alumno)]=empresa;
     }
 
     @Override
     public String obtenerEmpresa(AlumnoSegundo alumno) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int n= buscar(alumno);
+        
+        if(n>=0){
+            return "La empresa asignada al alumno " + alumno.getNombre() +alumno.getApellido() + " es: " + empresas[n] + ".";
+        }
+        
+        return "No se le ha asignado ninguna empresa";
     }
 
     @Override

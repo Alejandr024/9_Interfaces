@@ -6,7 +6,7 @@ package simulacro;
  */
 public interface FCT extends Instituto{
     
-    public String region = "CANARIAS";
+    public final String region = "CANARIAS";
     
     void asignarEmpresa(AlumnoSegundo alumno, String empresa);
     
