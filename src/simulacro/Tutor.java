@@ -53,7 +53,7 @@ public class Tutor implements FCT{
 
         arrayAux[arrayAux.length - 1] = alumno;
         alumnos = arrayAux;
-        System.out.println("El modulo " + alumno + " ha sido agregado.");
+        System.out.println("El alumno " + alumno + " ha sido agregado.");
         empresas= Arrays.copyOf(empresas, empresas.length+1);
     }
        
