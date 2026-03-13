@@ -1,4 +1,4 @@
-package ejercicioChati;
+package ejercicioChatiGpt;
 
 import java.util.Arrays;
 
